@@ -1,0 +1,29 @@
+{
+  "alternatives": [
+    {
+      "description": "Wrap the function behind a service boundary",
+      "evidence": [
+        "pattern:pure-library"
+      ],
+      "id": "service",
+      "tradeoffs": [
+        "Remote access adds operational overhead"
+      ]
+    }
+  ],
+  "approval": "dec_8fbcabe62a1c4d0c91bf",
+  "decision": {
+    "description": "A pure function in solution.py",
+    "evidence": [
+      "pattern:modular-monolith"
+    ],
+    "id": "library",
+    "tradeoffs": [
+      "Small interface; no network API"
+    ]
+  },
+  "human_rationale": "DEMO human inspected the proposal and evidence.",
+  "refinement": "art_533677e31d454885a351",
+  "srs": "art_0323a38c7d574c72b1d1",
+  "status": "accepted_by_human"
+}

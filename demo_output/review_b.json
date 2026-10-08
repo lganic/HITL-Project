@@ -1,0 +1,59 @@
+{
+  "_invocation": {
+    "context_hash": "dc079f968e257fa3fcaeddea0b5254029d0b429345a1b45cfe12b6b1ccdbe5ca",
+    "evidence_ids": [
+      "art_0323a38c7d574c72b1d1",
+      "art_3e086ce2272b464a951f",
+      "art_40fed2d2d7f74ea6a457",
+      "art_4b39948074224f5cbdba",
+      "art_609ce5d6a88f4e96ac9a",
+      "art_77f97a31296148b0af34",
+      "art_f89a3f7e080244378119"
+    ],
+    "id": "agent_9729f486824c471dafbb",
+    "model": "none",
+    "provider": "scripted-demo-fixture",
+    "role": "reviewer_b",
+    "system_hash": "699510a1ff69824945f26814b4da585ad527ff7d90fc342fb167484979fb15e2",
+    "usage": {}
+  },
+  "alternatives": [
+    "Inspect source and raw tests before deciding."
+  ],
+  "differences": [
+    {
+      "claim": "A uses split/join; B uses a regular expression, as visible in the candidates.",
+      "evidence": [
+        "art_77f97a31296148b0af34",
+        "art_4b39948074224f5cbdba",
+        "art_609ce5d6a88f4e96ac9a"
+      ]
+    }
+  ],
+  "failures": [],
+  "rationale": "Demonstrate the source-defined workflow using a small deterministic task.",
+  "recommendation": "Both pass; inspect the implementation tradeoff and make the human selection.",
+  "risk_analysis": [
+    {
+      "claim": "The small suite does not establish performance bounds for very large inputs.",
+      "evidence": [
+        "art_3e086ce2272b464a951f",
+        "art_40fed2d2d7f74ea6a457"
+      ]
+    }
+  ],
+  "risks": [
+    "This is scripted demo data, not live LLM reasoning."
+  ],
+  "summary": "Scripted demo: reviewer_b",
+  "tradeoffs": [
+    {
+      "claim": "A is shorter; B makes its matching policy explicit but adds regex machinery.",
+      "evidence": [
+        "art_77f97a31296148b0af34",
+        "art_4b39948074224f5cbdba",
+        "art_609ce5d6a88f4e96ac9a"
+      ]
+    }
+  ]
+}

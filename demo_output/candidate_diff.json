@@ -1,0 +1,4 @@
+{
+  "diff": "--- A/solution.py\n+++ B/solution.py\n@@ -1,5 +1,7 @@\n+import re\n+\n def normalize_whitespace(text):\n-    \"\"\"Normalize Unicode whitespace; require a string.\"\"\"\n+    \"\"\"Collapse whitespace with an explicit regular expression.\"\"\"\n     if not isinstance(text, str):\n         raise TypeError(\"text must be a string\")\n-    return \" \".join(text.split())\n+    return re.sub(r\"\\s+\", \" \", text).strip()\n",
+  "identical_source": false
+}

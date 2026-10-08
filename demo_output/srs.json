@@ -1,0 +1,45 @@
+{
+  "approval": "dec_739008d43fd84bc3a16e",
+  "approved_model": "art_c5703e0cf05b486796a1",
+  "assumptions": [
+    "Whitespace is defined by Python Unicode string handling"
+  ],
+  "constraints": [
+    "No external dependencies"
+  ],
+  "entities": [
+    {
+      "attributes": [
+        "Unicode string"
+      ],
+      "name": "Text"
+    }
+  ],
+  "glossary": {
+    "whitespace": "Unicode characters treated as whitespace by Python"
+  },
+  "iteration": 1,
+  "overview": "A deterministic Unicode whitespace normalization library.",
+  "project": "Unicode whitespace normalizer",
+  "relationships": [],
+  "requirements": [
+    {
+      "acceptance": [
+        "ASCII and Unicode separators become one ASCII space",
+        "Empty and whitespace-only inputs return empty"
+      ],
+      "id": "REQ-1",
+      "priority": "must",
+      "statement": "normalize_whitespace collapses Unicode whitespace and trims ends"
+    },
+    {
+      "acceptance": [
+        "None, integers, lists, and bytes raise TypeError"
+      ],
+      "id": "REQ-2",
+      "priority": "must",
+      "statement": "Non-string values raise TypeError"
+    }
+  ],
+  "schema_version": 1
+}

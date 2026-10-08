@@ -1,0 +1,8 @@
+{
+  "actor": "DEMO_SIMULATED_HUMAN",
+  "agent_executed": false,
+  "approval": "dec_2e4043ebadd7432f83ea",
+  "performed_by": "human",
+  "record": "DEMO: no deployment performed. Human-controlled deployment deferred.",
+  "status": "deferred"
+}

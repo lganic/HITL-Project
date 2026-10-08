@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.hitl/
+.hitl-demo/
+*.sqlite3*
+human.key
+*.egg-info/
+build/
+dist/
