@@ -4,6 +4,8 @@ import copy
 import difflib
 import time
 
+from .step_timing import record_step
+
 from .agents import CATALOG, search_catalog
 from .policy import ToolBroker, inspect_policy, scope_for_testing
 from .util import WorkflowError, digest, validate_files
@@ -118,15 +120,26 @@ class Engine:
         if p["state"] in GATES:
             return {"status": "waiting", "gate": self.store.open_gate(p, self.gate_proposal(p))}
         p = self.store.claim(project, self.lease_seconds)
+        # Time automated work only; human waiting is intentionally excluded.
+        started_ns = time.perf_counter_ns()
+        next_state = ""
+        step_status = "failed"
         try:
             next_state, data, outputs = self.advance(p)
             if next_state not in STATES:
                 raise WorkflowError("Internal transition targets an unknown state")
             self.store.finish(p, next_state, data, outputs)
+            step_status = "success"
         except Exception as exc:
             message = str(exc) if isinstance(exc, WorkflowError) else f"{type(exc).__name__} during {p['state']}; inspect local code and retry"
             self.store.fail(p, message)
             raise WorkflowError(message) from exc
+        finally:
+            elapsed_ns = time.perf_counter_ns() - started_ns
+            try:
+                record_step(p["state"], next_state, elapsed_ns, step_status)
+            except OSError as logging_error:
+                print(f"Warning: could not save step timing: {logging_error}")
         return {"status": "ready", "state": next_state}
 
     def run(self, project, max_steps=80, on_step=None):
